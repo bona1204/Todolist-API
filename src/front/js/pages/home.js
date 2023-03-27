@@ -62,16 +62,18 @@ export const Home = () => {//Esta es la versión con estados dentro del componen
 		}
 
 	}
-	const añadir = async (value) => {
+	const añadir =  (value) => {
 		let arrTemp = {label: value, done:false}
-			setTodos([...todos, arrTemp])
-		let { respuestaJson, response } = await actions.useFetch(`/todos/user/${user}`, todos, "PUT")
+		setTodos([...todos, arrTemp])
+		let { respuestaJson, response } = actions.useFetch(`/todos/user/${user}`, todos, "PUT")
+
 		if (response.ok) {//Si la respuesta es positiva entonces se modificó en el backend
 			console.log(response)
 		} else {
 			alert("No se actualizó o no hubo conexión con la API")
 		}
 	}
+
 	return (
 		<div >
 			<div  className="container-fluid justify-content align-item-center" style={paperstyle}> 
